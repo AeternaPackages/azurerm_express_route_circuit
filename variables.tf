@@ -9,6 +9,8 @@ Required:
 Optional:
     - allow_classic_operations
     - authorization_key
+    - authorization_key_key_vault_id (alternative to authorization_key - read from Key Vault instead)
+    - authorization_key_key_vault_secret_name (alternative to authorization_key - read from Key Vault instead)
     - bandwidth_in_gbps
     - bandwidth_in_mbps
     - express_route_port_id
@@ -32,6 +34,8 @@ Nested express_route_circuit_peerings (azurerm_express_route_circuit_peering):
         - route_filter_id
         - secondary_peer_address_prefix
         - shared_key
+        - shared_key_key_vault_id (alternative to shared_key - read from Key Vault instead)
+        - shared_key_key_vault_secret_name (alternative to shared_key - read from Key Vault instead)
         - ipv6 (block)
         - microsoft_peering_config (block)
     Nested express_route_connections (azurerm_express_route_connection):
@@ -49,18 +53,20 @@ Nested express_route_circuit_peerings (azurerm_express_route_circuit_peering):
 EOT
 
   type = map(object({
-    location                 = string
-    name                     = string
-    resource_group_name      = string
-    allow_classic_operations = optional(bool) # Default: false
-    authorization_key        = optional(string)
-    bandwidth_in_gbps        = optional(number)
-    bandwidth_in_mbps        = optional(number)
-    express_route_port_id    = optional(string)
-    peering_location         = optional(string)
-    rate_limiting_enabled    = optional(bool) # Default: false
-    service_provider_name    = optional(string)
-    tags                     = optional(map(string))
+    location                                = string
+    name                                    = string
+    resource_group_name                     = string
+    allow_classic_operations                = optional(bool) # Default: false
+    authorization_key                       = optional(string)
+    authorization_key_key_vault_id          = optional(string)
+    authorization_key_key_vault_secret_name = optional(string)
+    bandwidth_in_gbps                       = optional(number)
+    bandwidth_in_mbps                       = optional(number)
+    express_route_port_id                   = optional(string)
+    peering_location                        = optional(string)
+    rate_limiting_enabled                   = optional(bool) # Default: false
+    service_provider_name                   = optional(string)
+    tags                                    = optional(map(string))
     sku = object({
       family = string
       tier   = string
@@ -70,15 +76,17 @@ EOT
       resource_group_name = string
     })))
     express_route_circuit_peerings = optional(map(object({
-      peering_type                  = string
-      resource_group_name           = string
-      vlan_id                       = number
-      ipv4_enabled                  = optional(bool) # Default: true
-      peer_asn                      = optional(number)
-      primary_peer_address_prefix   = optional(string)
-      route_filter_id               = optional(string)
-      secondary_peer_address_prefix = optional(string)
-      shared_key                    = optional(string)
+      peering_type                     = string
+      resource_group_name              = string
+      vlan_id                          = number
+      ipv4_enabled                     = optional(bool) # Default: true
+      peer_asn                         = optional(number)
+      primary_peer_address_prefix      = optional(string)
+      route_filter_id                  = optional(string)
+      secondary_peer_address_prefix    = optional(string)
+      shared_key                       = optional(string)
+      shared_key_key_vault_id          = optional(string)
+      shared_key_key_vault_secret_name = optional(string)
       ipv6 = optional(object({
         enabled = optional(bool) # Default: true
         microsoft_peering = optional(object({
