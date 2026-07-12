@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.express_route_circuits : {
       for k2, v2 in coalesce(v1.express_route_circuit_authorizations, {}) :
       "${k1}/${k2}" => merge(v2, {
-        express_route_circuit_name = module.express_route_circuits.express_route_circuits["${k1}"].name
+        express_route_circuit_name = module.express_route_circuits.express_route_circuits_name["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.express_route_circuits : {
       for k2, v2 in coalesce(v1.express_route_circuit_peerings, {}) :
       "${k1}/${k2}" => merge(v2, {
-        express_route_circuit_name = module.express_route_circuits.express_route_circuits["${k1}"].name
+        express_route_circuit_name = module.express_route_circuits.express_route_circuits_name["${k1}"]
       })
     }
   ]...)
@@ -24,7 +24,7 @@ locals {
       for k2, v2 in coalesce(v1.express_route_circuit_peerings, {}) : {
         for k3, v3 in coalesce(v2.express_route_connections, {}) :
         "${k1}/${k2}/${k3}" => merge(v3, {
-          express_route_circuit_peering_id = module.express_route_circuit_peerings.express_route_circuit_peerings["${k1}/${k2}"].id
+          express_route_circuit_peering_id = module.express_route_circuit_peerings.express_route_circuit_peerings_id["${k1}/${k2}"]
         })
       }
     ]...)
