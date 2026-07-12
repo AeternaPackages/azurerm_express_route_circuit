@@ -1,4 +1,9 @@
 # --- azurerm_express_route_circuit ---
+output "express_route_circuits_id" {
+  description = "Map of id values across all express_route_circuits, keyed the same as var.express_route_circuits"
+  value       = module.express_route_circuits.express_route_circuits_id
+}
+
 output "express_route_circuits_allow_classic_operations" {
   description = "Map of allow_classic_operations values across all express_route_circuits, keyed the same as var.express_route_circuits"
   value       = module.express_route_circuits.express_route_circuits_allow_classic_operations
@@ -77,6 +82,11 @@ output "express_route_circuits_tags" {
 }
 
 # --- azurerm_express_route_circuit_authorization ---
+output "express_route_circuit_authorizations_id" {
+  description = "Map of id values across all express_route_circuit_authorizations, keyed the same as var.express_route_circuit_authorizations"
+  value       = module.express_route_circuit_authorizations.express_route_circuit_authorizations_id
+}
+
 output "express_route_circuit_authorizations_authorization_key" {
   description = "Map of authorization_key values across all express_route_circuit_authorizations, keyed the same as var.express_route_circuit_authorizations"
   value       = module.express_route_circuit_authorizations.express_route_circuit_authorizations_authorization_key
@@ -104,6 +114,11 @@ output "express_route_circuit_authorizations_resource_group_name" {
 }
 
 # --- azurerm_express_route_circuit_peering ---
+output "express_route_circuit_peerings_id" {
+  description = "Map of id values across all express_route_circuit_peerings, keyed the same as var.express_route_circuit_peerings"
+  value       = module.express_route_circuit_peerings.express_route_circuit_peerings_id
+}
+
 output "express_route_circuit_peerings_azure_asn" {
   description = "Map of azure_asn values across all express_route_circuit_peerings, keyed the same as var.express_route_circuit_peerings"
   value       = module.express_route_circuit_peerings.express_route_circuit_peerings_azure_asn
@@ -186,6 +201,11 @@ output "express_route_circuit_peerings_vlan_id" {
 }
 
 # --- azurerm_express_route_connection ---
+output "express_route_connections_id" {
+  description = "Map of id values across all express_route_connections, keyed the same as var.express_route_connections"
+  value       = module.express_route_connections.express_route_connections_id
+}
+
 output "express_route_connections_authorization_key" {
   description = "Map of authorization_key values across all express_route_connections, keyed the same as var.express_route_connections"
   value       = module.express_route_connections.express_route_connections_authorization_key
