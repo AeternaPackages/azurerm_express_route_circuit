@@ -56,7 +56,7 @@ EOT
     location                                = string
     name                                    = string
     resource_group_name                     = string
-    allow_classic_operations                = optional(bool) # Default: false
+    allow_classic_operations                = optional(bool)
     authorization_key                       = optional(string)
     authorization_key_key_vault_id          = optional(string)
     authorization_key_key_vault_secret_name = optional(string)
@@ -64,7 +64,7 @@ EOT
     bandwidth_in_mbps                       = optional(number)
     express_route_port_id                   = optional(string)
     peering_location                        = optional(string)
-    rate_limiting_enabled                   = optional(bool) # Default: false
+    rate_limiting_enabled                   = optional(bool)
     service_provider_name                   = optional(string)
     tags                                    = optional(map(string))
     sku = object({
@@ -79,7 +79,7 @@ EOT
       peering_type                     = string
       resource_group_name              = string
       vlan_id                          = number
-      ipv4_enabled                     = optional(bool) # Default: true
+      ipv4_enabled                     = optional(bool)
       peer_asn                         = optional(number)
       primary_peer_address_prefix      = optional(string)
       route_filter_id                  = optional(string)
@@ -88,12 +88,12 @@ EOT
       shared_key_key_vault_id          = optional(string)
       shared_key_key_vault_secret_name = optional(string)
       ipv6 = optional(object({
-        enabled = optional(bool) # Default: true
+        enabled = optional(bool)
         microsoft_peering = optional(object({
           advertised_communities     = optional(list(string))
           advertised_public_prefixes = optional(list(string))
-          customer_asn               = optional(number) # Default: 0
-          routing_registry_name      = optional(string) # Default: "NONE"
+          customer_asn               = optional(number)
+          routing_registry_name      = optional(string)
         }))
         primary_peer_address_prefix   = string
         route_filter_id               = optional(string)
@@ -102,18 +102,18 @@ EOT
       microsoft_peering_config = optional(object({
         advertised_communities     = optional(list(string))
         advertised_public_prefixes = list(string)
-        customer_asn               = optional(number) # Default: 0
-        routing_registry_name      = optional(string) # Default: "NONE"
+        customer_asn               = optional(number)
+        routing_registry_name      = optional(string)
       }))
       express_route_connections = optional(map(object({
         express_route_gateway_id             = string
         name                                 = string
         authorization_key                    = optional(string)
         enable_internet_security             = optional(bool)
-        express_route_gateway_bypass_enabled = optional(bool) # Default: false
+        express_route_gateway_bypass_enabled = optional(bool)
         internet_security_enabled            = optional(bool)
         private_link_fast_path_enabled       = optional(bool)
-        routing_weight                       = optional(number) # Default: 0
+        routing_weight                       = optional(number)
         routing = optional(object({
           associated_route_table_id = optional(string)
           inbound_route_map_id      = optional(string)
